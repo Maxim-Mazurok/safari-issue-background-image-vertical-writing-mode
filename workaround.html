@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safari Issue: Background Image with Vertical Writing Mode</title>
+    <style>
+      .image-background {
+        background-image: url("image.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      .vertical-writing {
+        writing-mode: vertical-rl;
+      }
+      .horizontal-writing {
+        writing-mode: horizontal-tb;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: flex">
+      <div class="image-background vertical-writing">
+        <p>
+          This is a test paragraph <br />
+          with <strong>vertical</strong> writing mode <br />
+          and a background image.
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div style="display: flex">
+      <div class="image-background horizontal-writing">
+        <p>
+          This is a test paragraph <br />
+          with <strong>horizontal</strong> writing mode <br />
+          and a background image.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <h1>Safari</h1>
+    <h2>Version 26.1 (21622.2.11.11.9)</h2>
+    <h2>Technology Preview: Release 232 (WebKit 21624.1.2.19.2)</h2>
+    <p>
+      Image with a vertical writing mode has no background, because div has zero
+      width - unexpected.
+    </p>
+    <img src="safari.png" alt="Safari reproduction" />
+
+    <h1>Chrome</h1>
+    <h2>Version 143.0.7499.41 (Official Build) (arm64)</h2>
+    <p>
+      Image with a vertical writing mode has background and non-zero width - as
+      expected.
+    </p>
+    <img src="chrome.png" alt="Chrome reproduction" />
+  </body>
+</html>
