@@ -17,3 +17,5 @@ Background image is shown correctly in Chrome:
 ## Workaround
 
 Workaround is to move the `writing-mode: vertical-rl;` from the child element to the parent element, see [workaround.html](./workaround.html) or [deployed page](https://maxim-mazurok.github.io/safari-issue-background-image-vertical-writing-mode/workaround.html).
+
+<!-- TODO: make this file shorter -->
